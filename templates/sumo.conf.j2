@@ -24,6 +24,6 @@ override={{ sumologic_collector_override }}
 {% if sumologic_collector_ephemeral is defined %}
 ephemeral={{ sumologic_collector_ephemeral }}
 {% endif %}
-{% if sumologic_collector_clobber is defined %}
+{% if sumologic_collector_clobber is defined and sumologic_collector_clobber != "" %}
 clobber={{ sumologic_collector_clobber }}
 {% endif %}
