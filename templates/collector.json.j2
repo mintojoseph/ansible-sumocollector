@@ -8,7 +8,7 @@
       "automaticDateParsing": true,
       "multilineProcessingEnabled": "{{ source.use_multiline }}",
       "useAutolineMatching": true,
-      "forceTimeZone": {{ sumologic_collector_force_timzone }},
+      "forceTimeZone": {{ sumologic_collector_force_timezone | default(sumologic_collector_force_timzone) }},
       "timeZone": "{{ sumologic_collector_timezone }}",
       "category": "{{ source.category }}",
       "pathExpression": "{{ source.path }}"

@@ -19,7 +19,7 @@ sumologic_collector_clobber: ""
 sumologic_installer_file: ""
 sumologic_collector_source_template: "collector.json.j2"
 sumologic_collector_timezone: "UTC"
-sumologic_collector_force_timzone: "false"
+sumologic_collector_force_timezone: "false"
 sumologic_collector_default_log_path:
   - { name: "EXAMPLE LOG", path: "/var/log/EXAMPLE.log", use_multiline: false, category: "EXAMPLE" }
 ```
