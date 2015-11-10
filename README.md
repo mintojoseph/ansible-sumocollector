@@ -9,13 +9,22 @@ Role Variables
 Default variables:
 
 ```
+# For RedHat only
 sumocollector_installer_rpm: https://collectors.sumologic.com/rest/download/rpm/64
 sumologic_installer_rpm_local_folder: /tmp
-sumologic_installer_remote_file: /tmp/sumo.deb
+
+# For Debian apt installation only
+sumologic_installer_remote_file: /tmp/sumocollector.deb
 sumocollector_installer_download: ""
+
+# Credentials
 sumologic_collector_accessid: ""
 sumologic_collector_accesskey: ""
+
+# Allow overwrite of old collectors. See:
+#   https://service.sumologic.com/help/Default.htm#Using_Clobber.htm
 sumologic_collector_clobber: ""
+
 sumologic_installer_file: ""
 sumologic_collector_source_template: "collector.json.j2"
 sumologic_collector_timezone: "UTC"
