@@ -40,6 +40,19 @@ You can add the role
       roles:
          - role: wgregorian.sumocollector
 
+Installation can be done via ansible-galaxy:
+
+    ansible-galaxy install wgregorian.sumocollector
+
+Or automated by creating a `requirements.yml` with this block:
+
+    - src: wgregorian.sumocollector
+
+and running:
+
+    ansible-galaxy install -r requirements.yml
+
+
 License
 -------
 
