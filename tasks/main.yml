@@ -5,7 +5,7 @@
   failed_when: no
   tags: sumologic
 
-- name: 'Download SumoColllector'
+- name: 'Download SumoCollector'
   get_url:
     url: '{{ sumocollector_installer_download }}'
     dest: '{{ sumologic_installer_remote_file }}'
@@ -21,7 +21,7 @@
   notify: Restart SumoCollector
 
 
-- name: 'Download SumoColllector redhat'
+- name: 'Download SumoCollector redhat'
   get_url:
     url: '{{ sumocollector_installer_rpm }}'
     dest: '{{ sumologic_installer_rpm_local_folder }}/sumo_collector.rpm'
