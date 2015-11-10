@@ -38,7 +38,7 @@ You can add the role
 
     - hosts: servers
       roles:
-         - role: ansible-sumocollector
+         - role: wgregorian.sumocollector
 
 License
 -------
