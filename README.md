@@ -10,12 +10,12 @@ Default variables:
 
 ```
 # For RedHat only
-sumocollector_installer_rpm: https://collectors.sumologic.com/rest/download/rpm/64
-sumologic_installer_rpm_local_folder: /tmp
+sumocollector_installer_rpm: "https://collectors.sumologic.com/rest/download/rpm/64"
+sumologic_installer_rpm_local_folder: "/tmp"
 
 # For Debian apt installation only
-sumologic_installer_remote_file: /tmp/sumocollector.deb
-sumocollector_installer_download: ""
+sumologic_installer_remote_file: "/tmp/sumocollector.deb"
+sumocollector_installer_download: "https://collectors.sumologic.com/rest/download/deb/64"
 
 # Credentials
 sumologic_collector_accessid: ""
@@ -30,14 +30,20 @@ sumologic_collector_source_template: "collector.json.j2"
 sumologic_collector_timezone: "UTC"
 sumologic_collector_force_timezone: "false"
 sumologic_collector_default_log_path:
-  - { name: "EXAMPLE LOG", path: "/var/log/EXAMPLE.log", use_multiline: false, category: "EXAMPLE" }
+  - name: "EXAMPLE LOG"
+    path: "/var/log/EXAMPLE.log"
+    use_multiline: false
+    category: "EXAMPLE"
 ```
 
 Group variable example:
 
 ```
 sumologic_collector_application_log_path:
-  - { name: "APP LOG", path: "/var/log/APP.log", use_multiline: false, category: "APP" }
+  - name: "APP LOG"
+    path: "/var/log/APP.log"
+    use_multiline: false
+    category: "APP" }
 ```
 
 Example Playbook
