@@ -21,4 +21,7 @@ sumologic_collector_source_template: "collector.json.j2"
 sumologic_collector_timezone: "UTC"
 sumologic_collector_force_timezone: "false"
 sumologic_collector_default_log_path:
-  - { name: "Sys Log", path: "/var/log/syslog.log", use_multiline: false, category: "OS/Linux/Syslog" }
+  - name: "Sys Log"
+    path: "/var/log/syslog"
+    use_multiline: false
+    category: "OS/Linux/Syslog"
