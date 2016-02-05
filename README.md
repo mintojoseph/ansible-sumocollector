@@ -48,4 +48,4 @@ MIT
 Author Information
 ------------------
 
-William Gregorian, Omada Health, Inc. Open to pull requests.
+William Gregorian - CISO, FutureAdvisor.
