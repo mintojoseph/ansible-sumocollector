@@ -18,6 +18,9 @@ accesskey={{ sumologic_collector_accesskey }}
 {% if sumologic_collector_source_template is defined %}
 sources=/etc/sumologic-collector.json
 {% endif %}
+{% if sumologic_collector_use_local_config is defined and sumologic_collector_use_local_config != "" %}
+syncSources=/etc/sumologic-collector.json
+{% endif %}
 {% if sumologic_collector_override is defined %}
 override={{ sumologic_collector_override }}
 {% endif %}
