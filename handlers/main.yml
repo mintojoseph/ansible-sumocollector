@@ -1,8 +1,4 @@
 ---
-
-
 - name: 'Restart SumoCollector'
-  service:
-    name: collector
-    state: restarted
+  command: "/opt/SumoCollector/collector restart"
   tags: [sumologic, sumologic-collector]
