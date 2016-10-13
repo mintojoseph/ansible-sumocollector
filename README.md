@@ -29,12 +29,18 @@ sumologic_installer_file: ""
 sumologic_collector_source_template: "collector.json.j2"
 sumologic_collector_timezone: "UTC"
 sumologic_collector_force_timezone: "false"
+```
+
+###### below is being deprecated for an item loop:
+```
 sumologic_collector_default_log_path:
   - name: "EXAMPLE LOG"
     path: "/var/log/EXAMPLE.log"
     use_multiline: false
     category: "EXAMPLE"
 ```
+###### :above is being deprecated for an item loop
+
 
 Group variable example:
 
