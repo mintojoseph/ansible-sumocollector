@@ -94,8 +94,7 @@ role 'ansible-sumocollector',
 ---
 - hosts: all
   roles:
-  - role: someother role
-  - role: ansible-role-sumologic
+  - role: ansible-sumocollector
 ```
 - run the following install role vi librarian-ansible to be available to playbook: `librarian-ansible install`
 
