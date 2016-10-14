@@ -86,7 +86,7 @@ sumologic_collector_application_log_path:
 - Ansiblefile
 ```
 role 'ansible-sumocollector',
-  git: 'https://github.com/knope/ansible-sumocollector.git'
+  git: 'https://github.com/wgregorian/ansible-sumocollector.git'
 ```
 ##### playbook
 - sample
