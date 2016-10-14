@@ -58,32 +58,53 @@ sumologic_collector_application_log_path:
 
 ## Examples
 
-###  Playbook
+### Installation
+
+#### via ansible-galaxy
+- playbook
 ```
 ---
     - hosts: servers
       roles:
          - role: wgregorian.sumocollector
 ```
-### Installation
-- via ansible-galaxy
+
 ```
     ansible-galaxy install wgregorian.sumocollector
 ```
--    - automated by creating a `requirements.yml` with this block:
+- automated by creating a `requirements.yml` with this block:
 
 ```
 ---
     - src: wgregorian.sumocollector
 ```
--    - and running:
+- and running:
 
 ```
     ansible-galaxy install -r requirements.yml
 ```
 
+#### via librarian-ansible
+- Ansiblefile
+```
+role 'ansible-role-sumologic',
+  git: 'https://github.com/knope/ansible-sumocollector.git'
+```
+- playbook
+```
+---
+- hosts: all
+  roles:
+  - role: someother role
+  - role: ansible-role-sumologic
+```
+- command to install role vi librarian-ansible
+```
+librarian-ansible install
+```
+
 ## License
 ###### MIT
 
-## Author Information
+## Author
 ###### William Gregorian - CISO, FutureAdvisor.
