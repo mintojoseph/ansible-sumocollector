@@ -1,4 +1,4 @@
-# ansible-role-sumologic
+# ansible-sumocollector
 ###### Ansible role to install SumoCollector. This role was inspired by modcloth's SumoCollector role, but it goes one step further by including the ability to include additional log paths.
 
 ## Role Variables
@@ -61,36 +61,35 @@ sumologic_collector_application_log_path:
 ### Installation
 
 #### via ansible-galaxy
-- playbook
+##### installation-A
+- run `ansible-galaxy install wgregorian.sumocollector`
+
+###### or
+##### installation-B
+- requirements.yml
+
+```
+---
+    - src: wgregorian.sumocollector
+```
+- and run the following to make the role available to playbook: `ansible-galaxy install -r requirements.yml`
+
+##### playbook
+- sample
 ```
 ---
     - hosts: servers
       roles:
          - role: wgregorian.sumocollector
 ```
-
-```
-    ansible-galaxy install wgregorian.sumocollector
-```
-- automated by creating a `requirements.yml` with this block:
-
-```
----
-    - src: wgregorian.sumocollector
-```
-- and running:
-
-```
-    ansible-galaxy install -r requirements.yml
-```
-
 #### via librarian-ansible
 - Ansiblefile
 ```
-role 'ansible-role-sumologic',
+role 'ansible-sumocollector',
   git: 'https://github.com/knope/ansible-sumocollector.git'
 ```
-- playbook
+##### playbook
+- sample
 ```
 ---
 - hosts: all
@@ -98,10 +97,7 @@ role 'ansible-role-sumologic',
   - role: someother role
   - role: ansible-role-sumologic
 ```
-- command to install role vi librarian-ansible
-```
-librarian-ansible install
-```
+- run the following install role vi librarian-ansible to be available to playbook: `librarian-ansible install`
 
 ## License
 ###### MIT
