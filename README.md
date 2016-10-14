@@ -70,12 +70,16 @@ sumologic_collector_application_log_path:
 ```
     ansible-galaxy install wgregorian.sumocollector
 ```
+
     - automated by creating a `requirements.yml` with this block:
+
 ```
 ---
     - src: wgregorian.sumocollector
 ```
+
     - and running:
+
 ```
     ansible-galaxy install -r requirements.yml
 ```
