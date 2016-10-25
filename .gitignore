@@ -45,4 +45,19 @@ com_crashlytics_export_strings.xml
 crashlytics.properties
 crashlytics-build.properties
 
+# vim swap files
+.*.swp
 
+# big things
+.tar
+.tar.gz
+.tar.bz
+.tgz
+.bz2
+.zip
+.rar
+.jar
+.exe
+.bin
+tmp/
+.tmp

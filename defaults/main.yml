@@ -1,16 +1,16 @@
 ---
 
-# For RedHat only
+# For yum only
 sumocollector_installer_rpm: "https://collectors.sumologic.com/rest/download/rpm/64"
 sumologic_installer_rpm_local_folder: "/tmp"
 
-# For Debian apt installation only
+# For apt only
 sumologic_installer_remote_file: "/tmp/sumocollector.deb"
 sumocollector_installer_download: ""
 
 # Credentials
-sumologic_collector_accessid: ""
-sumologic_collector_accesskey: ""
+sumologic_collector_accessid: "{{ lookup('env','sumologic_collector_accessid') }}"
+sumologic_collector_accesskey: "{{ lookup('env','sumologic_collector_accesskey') }}"
 
 # Allow overwrite of old collectors. See:
 #   https://service.sumologic.com/help/Default.htm#Using_Clobber.htm
