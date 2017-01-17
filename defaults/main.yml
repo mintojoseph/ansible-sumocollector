@@ -1,5 +1,4 @@
 ---
-
 sumologic_collector_root: "{% if sumologic_install_method == 'yum' %}/usr/local/SumoCollector{% else %}/opt/SumoCollector{% endif %}"
 # directory on the host machine to mount into container
 sumologic_host_dir: /opt/SumoCollector
@@ -26,6 +25,12 @@ sumologic_install_journal_syslog_service: "no"
 sumologic_remove_tar_install: "no"
 sumologic_remove_yum_install: "no"
 # For Debian apt installation only
+
+# For yum only
+sumocollector_installer_rpm: "https://collectors.sumologic.com/rest/download/rpm/64"
+sumologic_installer_rpm_local_folder: "/tmp"
+
+# For apt only
 sumologic_installer_remote_file: "/tmp/sumocollector.deb"
 sumocollector_installer_download: "{{ sumo_installer_rpm }}"
 
@@ -39,6 +44,10 @@ sumologic_collector_accesskey: "{{ lookup('env', 'SUMO_COLLECTOR_ACCESS_KEY') }}
 # Suggested partition rules:
 # sumo_category_major -> cluster supporting rancher/mantl or single orchestration layer
 sumologic_collector_name: "{{ inventory_hostname }}"
+
+# Credentials
+sumologic_collector_accessid: "{{ lookup('env','sumologic_collector_accessid') }}"
+sumologic_collector_accesskey: "{{ lookup('env','sumologic_collector_accesskey') }}"
 
 # Allow overwrite of old collectors. See:
 #   https://service.sumologic.com/help/Default.htm#Using_Clobber.htm

@@ -1,5 +1,4 @@
 ---
-
 # sumo.conf is deprecated in prefence of user.properties
 # This should be sym-linked by /opt/SumoCollector/config/user.properties
 # in mounted into container
@@ -50,6 +49,30 @@
   template:
     src: etc_cron.d_disk
     dest: /etc/cron.d/disk
+
+- name: 'Check for SumoCollector'
+  command: dpkg-query -l sumocollector
+  register: sumologic_collector_deb_check
+  failed_when: no
+  tags: sumologic
+
+- name: 'Download SumoCollector'
+  get_url:
+    url: '{{ sumocollector_installer_download }}'
+    dest: '{{ sumologic_installer_remote_file }}'
+  when: ansible_os_family == "Debian"
+  tags: sumologic
+
+- name: 'Download SumoCollector redhat'
+  get_url:
+    url: '{{ sumocollector_installer_rpm }}'
+    dest: '{{ sumologic_installer_rpm_local_folder }}/sumo_collector.rpm'
+  when: ansible_os_family == "RedHat"
+  tags: sumologic
+
+- name: 'Define initial SumoCollector sources'
+  set_fact:
+    sumologic_collector_log_paths: "{{ sumologic_collector_default_log_path|list + sumologic_collector_application_log_path|list }}"
   tags: [sumologic, sumologic-collector]
 
 - name: 'Create collector configuration'
@@ -119,3 +142,19 @@
   tags: [sumologic, sumologic-collector, sumologic_force_restart]
   when: (sumologic_force_restart == "yes") and (sumologic_install_method == "docker")
   notify: 'Restart SumoCollector'
+
+- name: 'Install SumoCollector apt'
+  apt:
+    deb: '{{ sumologic_installer_remote_file }}'
+    state: installed
+  when: ansible_os_family == "Debian"
+  tags: sumologic
+  notify: Restart SumoCollector
+
+- name: 'Install SumoCollector yum'
+  yum:
+    name: '{{ sumologic_installer_rpm_local_folder }}/sumo_collector.rpm'
+    state: present
+  when: ansible_os_family == "RedHat"
+  tags: sumologic
+  notify: Restart SumoCollector
