@@ -192,5 +192,7 @@ License
 -------
 MIT
 
-William Gregorian - CISO, FutureAdvisor.
-Kesten Broughton - Sr. Devops Engineer, CognitiveScale
+Project Contributors
+-------
+##### William Gregorian - CISO, FutureAdvisor.
+##### Kesten Broughton - Sr. Devops Engineer, CognitiveScale
