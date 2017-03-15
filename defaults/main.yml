@@ -2,6 +2,8 @@
 sumologic_collector_root: "{% if sumologic_install_method == 'yum' %}/usr/local/SumoCollector{% else %}/opt/SumoCollector{% endif %}"
 # directory on the host machine to mount into container
 sumologic_host_dir: /opt/SumoCollector
+sumologic_config_dir_owner: root
+
 # default install method to docker
 sumologic_install_method: docker
 # consume multiple sources from /etc/sumo/sumo.d
