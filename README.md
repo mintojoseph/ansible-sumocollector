@@ -95,7 +95,7 @@ sumologic_collector_application_log_path:
   - name: "APP LOG"
     path: "/var/log/APP.log"
     use_multiline: false
-    category: "APP" }
+    category: "APP" 
 ```
 
 ## Examples
