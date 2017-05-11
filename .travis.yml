@@ -34,6 +34,10 @@ script:
 after_failure:
   - "sudo tail -50 /var/log/syslog"
   - "sudo service --status-all"
+  - "sudo cat /opt/SumoCollector/config/user.properties"
+  - "sudo ls -l /opt/SumoCollector/logs/"
+  - "sudo cat /opt/SumoCollector/logs/collector.log"
+  - "sudo cat /opt/SumoCollector/logs/collector.out.log"
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/

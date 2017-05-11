@@ -33,6 +33,7 @@ end
 describe file('/opt/SumoCollector/config/user.properties') do
   its(:content) { should match /accessid/ }
   its(:content) { should match /accesskey/ }
+  let(:sudo_options) { '-u root -H' }
 end
 
 describe file('/opt/SumoCollector/logs/collector.log') do
