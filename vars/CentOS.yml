@@ -1,0 +1,4 @@
+---
+
+sumocollector_pkg_deps:
+    - crontabs

@@ -1,5 +1,8 @@
 ---
 
+- name: Include distribution-specific variables
+  include_vars: "{{ ansible_distribution }}.yml"
+
 - include: requirements.yml
 
 # sumo.conf is deprecated in prefence of user.properties
@@ -131,7 +134,7 @@
    - { n: 'net.core.wmem_max', v: 8388608 }
    - { n: 'net.core.rmem_max', v: 8388608 }
   tags: [sumologic, sumologic-collector]
-  when: (ansible_distribution == 'Ubuntu' and ansible_distribution_major_version >= 16) or ansible_distribution == 'Debian' or ansible_os_family == 'RedHat'
+  when: (ansible_virtualization_type is not defined or (ansible_virtualization_type != "lxc" and ansible_virtualization_type != "docker"))
 
 - name: 'Ensure collector is running'
   service:

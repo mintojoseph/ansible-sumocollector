@@ -4,5 +4,4 @@
   package:
     name: "{{ item }}"
     state: present
-  with_items:
-    - cron
+  with_items: "{{ sumocollector_pkg_deps }}"
