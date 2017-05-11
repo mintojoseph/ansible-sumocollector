@@ -9,6 +9,7 @@
   command: dpkg-query -l sumocollector
   register: sumologic_collector_deb_check
   failed_when: no
+  changed_when: false
   tags: [sumologic, sumologic_force_restart]
   #when: ansible_os_family == "Debian"
 
@@ -31,6 +32,7 @@
   command: yum list *sumo_collector*
   register: sumologic_collector_yum_check
   failed_when: no
+  changed_when: false
   tags: [sumologic, sumologic_force_restart]
   #when: ansible_os_family == "RedHat"
 
