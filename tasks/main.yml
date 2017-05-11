@@ -117,10 +117,15 @@
   tags: [sumologic, sumologic-collector]
 
 - name: 'Set udp limits for sumo (native and inherited by container)'
-  shell: "{{ item }}"
+  sysctl:
+    name: "{{ item.n }}"
+    value: "{{ item.v }}"
+    state: present
+    sysctl_set: yes
+    reload: yes
   with_items:
-   - sysctl -w net.core.wmem_max=8388608
-   - sysctl -w net.core.rmem_max=8388608
+   - { n: 'net.core.wmem_max', v: 8388608 }
+   - { n: 'net.core.rmem_max', v: 8388608 }
   tags: [sumologic, sumologic-collector]
 
 - name: 'Ensure collector is running'
