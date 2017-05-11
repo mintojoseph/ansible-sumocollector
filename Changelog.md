@@ -1,7 +1,12 @@
 
 
 * juju4, 2017-05
-  
+  Validate Travis Test, add Kitchen+Serverspec
+  Validate install on Ubuntu Trusty, Xenial
+  Use all recent ansible modules
+  Ensure idempotency
+  Run as user option
+  Clean-up
 
 * Changelog from wgregorian
 Switched from single source file to /etc/sumo/sumo.d

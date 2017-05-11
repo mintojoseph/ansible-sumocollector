@@ -54,6 +54,7 @@
   command: dpkg-query -l sumocollector
   register: sumologic_collector_deb_check
   failed_when: no
+  changed_when: false
   tags: sumologic
 
 - name: 'Download SumoCollector'

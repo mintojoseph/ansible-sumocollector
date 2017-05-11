@@ -2,7 +2,7 @@
 
 - name: Restart SumoCollector
   service:
-    name: sumologic-collector
+    name: "{{ sumologic_collector_service_name }}"
     state: stopped
     use: service
   tags: [sumologic, sumologic-collector]
@@ -20,7 +20,7 @@
 
 - name: Restart SumoCollector start
   service:
-    name: sumologic-collector
+    name: "{{ sumologic_collector_service_name }}"
     state: started
     use: service
   tags: [sumologic, sumologic-collector]

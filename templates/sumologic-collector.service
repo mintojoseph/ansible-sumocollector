@@ -4,9 +4,13 @@
 [Unit]
 Description=sumologic-collector
 After=docker.service
+{% if sumologic_docker_systemd_with_consul %}
 After=consul.service
+{% endif %}
 Requires=docker.service
+{% if sumologic_docker_systemd_with_consul %}
 Wants=consul.service
+{% endif %}
 
 [Service]
 Restart=on-failure

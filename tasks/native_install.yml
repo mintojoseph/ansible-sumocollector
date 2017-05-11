@@ -1,5 +1,6 @@
 # native_install.yml
 
+## FIXME!
 - name: Install sumo with sumo installer
   shell: wget "https://collectors.us2.sumologic.com/rest/download/linux/64" -O SumoCollector.sh && sudo chmod +x SumoCollector.sh && sudo ./SumoCollector.sh -q -Vsumo.token_and_url=MDQxdEdweHNLMDNtd210SDg3SENsSU0wMW1ZSGIzcDVodHRwczovL2NvbGxlY3RvcnMudXMyLnN1bW9sb2dpYy5jb20=
   tags: [sumologic, sumologic_token_installer]
@@ -50,3 +51,6 @@
   when: ( sumologic_collector_yum_check.rc == 1 ) and ( ansible_os_family == "RedHat" ) 
   tags: [sumologic, sumologic_force_restart]
   notify: Restart SumoCollector
+
+- include: native_runas.yml
+  when: sumologic_collector_user != 'root'
