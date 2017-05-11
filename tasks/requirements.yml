@@ -1,0 +1,8 @@
+---
+
+- name: ensure sumo collector requirements packages are present
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - cron

@@ -1,4 +1,7 @@
 ---
+
+- include: requirements.yml
+
 # sumo.conf is deprecated in prefence of user.properties
 # This should be sym-linked by /opt/SumoCollector/config/user.properties
 # in mounted into container
@@ -128,6 +131,7 @@
    - { n: 'net.core.wmem_max', v: 8388608 }
    - { n: 'net.core.rmem_max', v: 8388608 }
   tags: [sumologic, sumologic-collector]
+  when: (ansible_distribution == 'Ubuntu' and ansible_distribution_major_version >= 16) or ansible_distribution == 'Debian' or ansible_os_family == 'RedHat'
 
 - name: 'Ensure collector is running'
   service:
