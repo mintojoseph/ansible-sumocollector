@@ -9,11 +9,20 @@ set :backend, :exec
 #    c.formatter = 'JUnit'
 #end
 
+describe package('docker-engine') do
+  it { should be_installed }
+end
+
 describe package('SumoCollector'), :if => os[:family] == 'redhat' do
   it { should be_installed }
 end
 describe package('sumocollector'), :if => os[:family] == 'ubuntu' do
   it { should be_installed }
+end
+
+describe service('docker') do
+  it { should be_enabled }
+  it { should be_running }
 end
 
 describe service('collector') do
