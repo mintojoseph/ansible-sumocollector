@@ -22,18 +22,21 @@ describe service('collector') do
 end
 
 describe file('/opt/SumoCollector/config/user.properties') do
+  its(:size) { should > 0 }
   its(:content) { should match /accessid/ }
   its(:content) { should match /accesskey/ }
   let(:sudo_options) { '-u root -H' }
 end
 
 describe file('/opt/SumoCollector/logs/collector.log') do
+  its(:size) { should > 0 }
   its(:content) { should match /com.sumologic.util.scala.configuration.ExplicitModuleConfigurationFactory - Loaded configuration file/ }
 ## will have errors as not providing credentials
 #  its(:content) { should_not match /ERROR/ }
   let(:sudo_options) { '-u root -H' }
 end
 describe file('/opt/SumoCollector/logs/collector.out.log') do
+  its(:size) { should > 0 }
   its(:content) { should match /--> Wrapper Started as Daemon/ }
   let(:sudo_options) { '-u root -H' }
 end

@@ -9,20 +9,11 @@ set :backend, :exec
 #    c.formatter = 'JUnit'
 #end
 
-describe package('docker-engine') do
-  it { should be_installed }
-end
-
 describe package('SumoCollector'), :if => os[:family] == 'redhat' do
   it { should be_installed }
 end
 describe package('sumocollector'), :if => os[:family] == 'ubuntu' do
   it { should be_installed }
-end
-
-describe service('docker') do
-  it { should be_enabled }
-  it { should be_running }
 end
 
 describe service('collector') do
@@ -31,18 +22,21 @@ describe service('collector') do
 end
 
 describe file('/opt/SumoCollector/config/user.properties') do
+  its(:size) { should > 0 }
   its(:content) { should match /accessid/ }
   its(:content) { should match /accesskey/ }
   let(:sudo_options) { '-u root -H' }
 end
 
 describe file('/opt/SumoCollector/logs/collector.log') do
+  its(:size) { should > 0 }
   its(:content) { should match /com.sumologic.util.scala.configuration.ExplicitModuleConfigurationFactory - Loaded configuration file/ }
 ## will have errors as not providing credentials
 #  its(:content) { should_not match /ERROR/ }
   let(:sudo_options) { '-u root -H' }
 end
 describe file('/opt/SumoCollector/logs/collector.out.log') do
+  its(:size) { should > 0 }
   its(:content) { should match /--> Wrapper Started as Daemon/ }
   let(:sudo_options) { '-u root -H' }
 end

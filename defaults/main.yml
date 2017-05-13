@@ -1,7 +1,8 @@
 ---
 ## https://help.sumologic.com/Send_Data/Installed_Collectors/04Install_a_Collector_on_Linux
 
-sumologic_collector_root: "{% if sumologic_install_method == 'yum' %}/usr/local/SumoCollector{% else %}/opt/SumoCollector{% endif %}"
+#sumologic_collector_root: "{% if sumologic_install_method == 'yum' %}/usr/local/SumoCollector{% else %}/opt/SumoCollector{% endif %}"
+sumologic_collector_root: "/opt/SumoCollector"
 # directory on the host machine to mount into container
 sumologic_host_dir: /opt/SumoCollector
 sumologic_config_dir_owner: root
@@ -14,7 +15,7 @@ sumologic_install_method: yum
 sumologic_single_source_file: "no"
 syslog_units_directory: /usr/lib/systemd/system
 sumologic_docker_systemd_with_consul: false
-sumologic_collector_service_name: "{% if sumologic_install_method == 'yum' %}{% if ansible_os_family == 'RedHat' %}SumoCollector{% else %}collector{% endif %}{% else %}sumologic-collector{% endif %}"
+sumologic_collector_service_name: "{% if sumologic_install_method == 'yum' %}collector{% else %}sumologic-collector{% endif %}"
 sumologic_collector_user: root
 #sumologic_collector_user: _sumo
 
