@@ -26,7 +26,23 @@ env:
     suite: default
   - distribution: centos
     version: 7
-    suite: default-docker
+    suite: default-runas
+  - distribution: ubuntu
+    version: 16.04
+    suite: default-runas
+  - distribution: ubuntu
+    version: 14.04
+    suite: default-runas
+  - distribution: ubuntu
+    version: 12.04
+    suite: default-runas
+  - distribution: debian
+    version: 8
+    suite: default-runas
+## failing in kitchen/docker, ok kitchen/vagrant: ernestas-poskus.docker : Ensure docker service is enabled
+#  - distribution: centos
+#    version: 7
+#    suite: default-docker
   - distribution: ubuntu
     version: 16.04
     suite: default-docker
@@ -69,4 +85,3 @@ script:
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
-

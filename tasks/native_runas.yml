@@ -1,18 +1,25 @@
 ---
 ## https://help.sumologic.com/Send_Data/Installed_Collectors/05Reference_Information_for_Collector_Installation/05Set_the_Run_As_User_for_a_Collector
 
-- name: gave read/write access to sumo user
-  acl:
-    path: "{{ sumologic_collector_root }}"
-    entity: "{{ sumologic_collector_user }}"
-    etype: user
-    permissions: rwx
-    recursive: yes
+- name: ensure sumo user is presents
+  user:
+    name: "{{ sumologic_collector_user }}"
+    comment: "Sumologic collector user"
     state: present
+    system: yes
+
+- name: gave read/write access to sumo user
+  file:
+    path: "{{ sumologic_collector_root }}"
+    owner: "{{ sumologic_collector_user }}"
+    recurse: yes
+    state: directory
 
 - name: check current collector service file
   command: "egrep '^RUN_AS_USER={{ sumologic_collector_user }}' /etc/init.d/collector"
   register: svcfile
+  changed_when: false
+  ignore_errors: true
 
 - block:
     - name: Remove collector service
@@ -31,4 +38,6 @@
       command: "{{ sumologic_collector_root }}/collector install"
       args:
         creates: /etc/init.d/collector
+      notify:
+        - Restart SumoCollector
   when: svcfile.stdout == ''

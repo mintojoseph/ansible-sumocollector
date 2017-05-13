@@ -13,7 +13,7 @@ provisioner:
   hosts: test-kitchen
 #  ansible_verbose: true
   ansible_verbose: false
-  ansible_verbosity: 3
+  ansible_verbosity: 4
   ansible_extra_flags: <%= ENV['ANSIBLE_EXTRA_FLAGS'] %>
 #  ansible_yum_repo: http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-8.noarch.rpm
 #  ansible_yum_repo: https://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
@@ -41,7 +41,9 @@ suites:
   - name: default
     run_list:
     attributes:
+  - name: default-runas
+    run_list:
+    attributes:
   - name: default-docker
     run_list:
     attributes:
-
