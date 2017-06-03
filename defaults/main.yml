@@ -61,6 +61,9 @@ sumologic_collector_source_template: "collector.json.j2"
 sumologic_collector_timezone: "UTC"
 sumologic_collector_force_timezone: "false"
 
+## https://help.sumologic.com/Send_Data/Installed_Collectors/05Reference_Information_for_Collector_Installation/06Parameters_for_the_Command_Line_Installer
+#sumologic_token_installer: xxx
+
 ## Just for testing
 deployment_id: ANSIBLETEST
 sumologic_collector_default_log_path:

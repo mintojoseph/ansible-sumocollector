@@ -2,7 +2,8 @@
 
 ## FIXME!
 - name: Install sumo with sumo installer
-  shell: wget "https://collectors.us2.sumologic.com/rest/download/linux/64" -O SumoCollector.sh && sudo chmod +x SumoCollector.sh && sudo ./SumoCollector.sh -q -Vsumo.token_and_url=MDQxdEdweHNLMDNtd210SDg3SENsSU0wMW1ZSGIzcDVodHRwczovL2NvbGxlY3RvcnMudXMyLnN1bW9sb2dpYy5jb20=
+  shell: >
+    wget "https://collectors.us2.sumologic.com/rest/download/linux/64" -O SumoCollector.sh && sudo chmod +x SumoCollector.sh && sudo ./SumoCollector.sh -q -Vsumo.token_and_url={{ sumologic_token_installer }}
   tags: [sumologic, sumologic_token_installer]
   when: sumologic_token_installer is defined
 
