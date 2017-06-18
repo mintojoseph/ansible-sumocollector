@@ -103,13 +103,14 @@
     dest: "{{ sumologic_host_dir }}"
   tags: [sumologic, sumologic-collector]
 
-- name: 'Template sources'
-  template:
-    src: ../templates/sources/{{ item | basename }}
-    dest: "{{ sumologic_sources_dir }}"
-  tags: [sumologic, sumologic-collector]
-  when: sumologic_single_source_file != "yes"
-  with_fileglob: ../templates/sources/*
+- block:
+    - name: 'Template sources'
+      template:
+        src: ../templates/sources/{{ item | basename }}
+        dest: "{{ sumologic_sources_dir }}"
+      tags: [sumologic, sumologic-collector]
+      with_fileglob: ../templates/sources/*
+  when: sumologic_single_source_file != "yes" and sumologic_single_source_file != true
 
 - include: linux_performance.yml
   tags: [sumologic, sumologic-collector]
