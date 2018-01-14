@@ -36,6 +36,7 @@ platforms:
 ## tool chain kitchen and image need customization... nok currently
 #  - name: alpine-3.4
   - name: debian-8
+  - name: debian-9
 
 suites:
   - name: default
