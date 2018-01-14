@@ -5,22 +5,17 @@ rvm:
   - 2.4
 
 env:
-#  - distribution: centos
-#    version: 6
   - distribution: centos
     version: 7
     suite: default
   - distribution: ubuntu
     version: 16.04
     suite: default
-  - distribution: ubuntu
-    version: 14.04
-    suite: default
-  - distribution: ubuntu
-    version: 12.04
-    suite: default
 #  - distribution: alpine
 #    version: 3.4
+  - distribution: debian
+    version: 9
+    suite: default
   - distribution: debian
     version: 8
     suite: default
@@ -29,12 +24,6 @@ env:
     suite: default-runas
   - distribution: ubuntu
     version: 16.04
-    suite: default-runas
-  - distribution: ubuntu
-    version: 14.04
-    suite: default-runas
-  - distribution: ubuntu
-    version: 12.04
     suite: default-runas
   - distribution: debian
     version: 8
@@ -45,12 +34,6 @@ env:
 #    suite: default-docker
   - distribution: ubuntu
     version: 16.04
-    suite: default-docker
-  - distribution: ubuntu
-    version: 14.04
-    suite: default-docker
-  - distribution: ubuntu
-    version: 12.04
     suite: default-docker
   - distribution: debian
     version: 8
@@ -80,7 +63,7 @@ script:
   - KITCHEN_YAML=.kitchen.docker.yml kitchen verify ${suite}-${distribution}-${version//./}
 
 #after_failure:
-#  - "systemctl -l status"
+#  - "systemctl -l --no-pager status"
 #  - "journalctl -xe --no-pager"
 
 notifications:
