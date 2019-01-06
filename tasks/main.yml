@@ -19,7 +19,7 @@
 - name: 'Template SumoCollector files'
   template:
     src: "{{ item }}"
-    dest: "{{ sumologic_config_dir }}/{{item}}"
+    dest: "{{ sumologic_config_dir }}/{{ item }}"
     mode: 0700
     owner: "{{ sumologic_config_dir_owner }}"
   tags: [sumologic, sumologic-collector]
@@ -31,7 +31,7 @@
     - sumo-check-disk.sh
 
 - name: 'Optionally stop sumo'
-  shell: "{{ sumologic_collector_root}}/collector stop"
+  shell: "{{ sumologic_collector_root }}/collector stop"
   tags: [sumologic, sumologic-collector]
   when: sumologic_remove_tar_install == "yes"
   ignore_errors: yes
@@ -110,7 +110,7 @@
         dest: "{{ sumologic_sources_dir }}"
       tags: [sumologic, sumologic-collector]
       with_fileglob: ../templates/sources/*
-  when: sumologic_single_source_file != "yes" and sumologic_single_source_file != true
+  when: sumologic_single_source_file != "yes" and not sumologic_single_source_file
 
 - include: linux_performance.yml
   tags: [sumologic, sumologic-collector]

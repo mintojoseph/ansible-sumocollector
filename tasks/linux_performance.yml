@@ -5,14 +5,16 @@
 - name: install sysstat
   yum:
     name: sysstat
-  tags: 
+  tags:
    - sumologic
    - sumo-perf
+  register: pkg_result
+  until: pkg_result is success
 
 - name: template cron for sysstat
   template:
     src: etc_cron.d_sysstat
     dest: /etc/cron.d/sysstat
-  tags: 
+  tags:
     - sumologic
     - sumo-perf
