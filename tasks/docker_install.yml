@@ -2,13 +2,13 @@
 # docker_install.yml
 
 # - set_fact:
-#     updated_sumologic_docker_options: "{{sumologic_docker_options}} -v /var/log/sa:/var/log/sa"
+#     updated_sumologic_docker_options: "{{ sumologic_docker_options }} -v /var/log/sa:/var/log/sa"
 #   when: sumologic_do_sysstat == "yes"
 #   tags:
 #     - sumologic
 #     - sumologic_docker
 
-# - debug: msg="{{updated_sumologic_docker_options}}"
+# - debug: msg="{{ updated_sumologic_docker_options }}"
 #   tags:
 #     - sumologic
 #     - sumologic_docker
