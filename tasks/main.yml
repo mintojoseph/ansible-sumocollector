@@ -77,6 +77,11 @@
   when: ansible_os_family == "RedHat"
   tags: sumologic
 
+#- name: 'Define initial SumoCollector sources'
+#  set_fact:
+#    sumologic_collector_log_paths: "{{ sumologic_collector_default_log_path|list + sumologic_collector_application_log_path|list }}"
+#  tags: [sumologic, sumologic-collector]
+
 - name: 'Create collector configuration'
   template:
     src: collector.json.j2
@@ -113,10 +118,6 @@
   when: sumologic_install_method == "yum"
   tags: [sumologic, sumologic-collector]
 
-- include: docker_install.yml
-  when: sumologic_install_method == "docker"
-  tags: [sumologic, sumologic-collector]
-
 - name: 'Set udp limits for sumo (native and inherited by container)'
   sysctl:
     name: "{{ item.n }}"
@@ -133,26 +134,10 @@
       (ansible_virtualization_type != "lxc" and ansible_virtualization_type != "docker")
     )
 
-- name: 'Ensure collector is running'
-  service:
-    name: "{{ item }}"
-    state: started
-  with_items:
-    - sumologic-collector.service
-  when: sumologic_install_method == "docker"
-  tags: [sumologic, sumologic_docker]
-
 - name: 'Force restart SumoCollector'
   command: "{{ sumologic_collector_root }}/collector restart"
   tags: [sumologic, sumologic-collector, sumologic_force_restart]
-  when: (sumologic_force_restart == "yes") and (sumologic_install_method != "docker")
-
-- name: 'Force restart SumoCollector docker'
-  command: echo "restarting docker"
-  changed_when: false
-  tags: [sumologic, sumologic-collector, sumologic_force_restart]
-  when: (sumologic_force_restart == "yes") and (sumologic_install_method == "docker")
-  notify: 'Restart SumoCollector'
+  when: (sumologic_force_restart == "yes")
 
 - name: 'Install SumoCollector apt'
   apt:
